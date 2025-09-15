@@ -235,6 +235,79 @@ body{
   100% { opacity: 1; transform: translateY(0); }
 }
 
+@media (max-width: 1080px) {
+  .container {
+    height: auto; /* Allow container to adjust height */
+    padding: 15px;
+  }
+
+  .envelope {
+    width: 250px;
+    height: 180px;
+  }
+
+  .letter {
+    font-size: 13px;
+    padding: 12px;
+    border-radius: 12px;
+  }
+
+  .title {
+    font-size: 2.2rem;
+    top: 7%;
+  }
+
+  .polaroid {
+    width: 110px;
+    padding: 8px;
+  }
+
+  .polaroid img {
+    border-radius: 4px;
+  }
+
+  .polaroid .caption {
+    font-size: 11px;
+  }
+
+  .footer {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 720px) {
+  .container {
+    padding: 10px;
+  }
+
+  .envelope {
+    width: 200px;
+    height: 150px;
+  }
+
+  .letter {
+    font-size: 12px;
+    padding: 10px;
+  }
+
+  .title {
+    font-size: 1.8rem;
+  }
+
+  .polaroid {
+    width: 90px;
+    padding: 6px;
+  }
+
+  .polaroid .caption {
+    font-size: 10px;
+  }
+
+  .footer {
+    font-size: 0.8rem;
+  }
+}
+
 @media (max-width: 768px) {
   .container {
     height: auto; /* Allow container to adjust height */
