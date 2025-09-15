@@ -2,6 +2,13 @@ const envelope = document.querySelector('.envelope-wrapper');
 const letter = document.querySelector('.letter');
 const title = document.querySelector('.title');
 let heartInterval;
+let isScrolling = false; // Flag to track scrolling
+
+// Prevent closing the letter while scrolling
+letter.addEventListener('scroll', () => {
+  isScrolling = true;
+  setTimeout(() => { isScrolling = false; }, 200); // Reset after 200ms
+});
 
 envelope.addEventListener("keydown", (e) => {
   if (e.key === "Enter" || e.key === " ") envelope.click();
@@ -52,7 +59,7 @@ envelope.addEventListener('click', (e) => {
       }, i * 100);
     }
 
-  } else if (!letter.contains(e.target)) { // Close only if clicking outside the letter
+  } else if (!letter.contains(e.target) && !isScrolling) { // Close only if clicking outside and not scrolling
     letter.classList.remove("zoomed");
     letter.classList.add("closing");
 
