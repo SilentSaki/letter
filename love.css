@@ -84,6 +84,8 @@ body{
   overflow-y: auto; /* Ensure vertical scrolling is enabled */
   scrollbar-width: thin; /* For Firefox: thin scrollbar */
   scrollbar-color: var(--accent-color) var(--primary); /* For Firefox: colors */
+  -webkit-overflow-scrolling: touch; /* Enable smooth scrolling for iOS */
+  touch-action: auto; /* Allow touch gestures for scrolling */
 }
 .letter::-webkit-scrollbar {
   width: 8px; /* Width of the scrollbar */
