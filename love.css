@@ -81,12 +81,26 @@ body{
   transition: bottom 0.5s ease-in-out;
   box-shadow: 0 0 10px var(--shadow-color); /* Softer shadow */
   padding: 20px 15px;
-  overflow-y: auto;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
+  overflow-y: auto; /* Ensure vertical scrolling is enabled */
+  scrollbar-width: thin; /* For Firefox: thin scrollbar */
+  scrollbar-color: var(--accent-color) var(--primary); /* For Firefox: colors */
 }
-.letter::-webkit-scrollbar { 
-  display: none;
+.letter::-webkit-scrollbar {
+  width: 8px; /* Width of the scrollbar */
+}
+
+.letter::-webkit-scrollbar-track {
+  background: var(--primary); /* Track background color */
+  border-radius: 10px; /* Rounded track corners */
+}
+
+.letter::-webkit-scrollbar-thumb {
+  background: var(--accent-color); /* Thumb color */
+  border-radius: 10px; /* Rounded thumb corners */
+}
+
+.letter::-webkit-scrollbar-thumb:hover {
+  background: var(--hover-color); /* Thumb color on hover */
 }
 
 .text p { 
@@ -571,5 +585,29 @@ body{
   25% { transform: rotateX(10deg); }
   50% { transform: rotateX(-10deg); }
   75% { transform: rotateX(5deg); }
+}
+
+.scroll-top-btn {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  padding: 8px 12px;
+  font-size: 14px;
+  background: var(--accent-color);
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  box-shadow: 0 4px 6px var(--shadow-color);
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.scroll-top-btn:hover {
+  background: var(--hover-color);
+  transform: scale(1.1);
+}
+
+.scroll-top-btn:active {
+  transform: scale(1);
 }
 
