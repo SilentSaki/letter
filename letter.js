@@ -25,7 +25,7 @@ envelope.addEventListener('click', (e) => {
       setTimeout(() => {
         const heart = document.createElement("div");
         heart.classList.add("float-heart");
-        heart.innerHTML = "❤️";
+        heart.innerHTML = "💖";
 
         const rect = envelope.getBoundingClientRect();
         heart.style.left = Math.random() * 100 + "vw";
@@ -41,7 +41,7 @@ envelope.addEventListener('click', (e) => {
     heartInterval = setInterval(() => {
       const heart = document.createElement("div");
       heart.classList.add("float-heart");
-      heart.innerHTML = "❤️";
+      heart.innerHTML = "💗";
       heart.style.left = Math.random() * 100 + "vw";
       heart.style.transition = `transform ${3 + Math.random() * 2}s linear, opacity ${3 + Math.random() * 2}s ease-out`;
       heart.style.fontSize = (Math.random() * 10 + 15) + "px";
@@ -84,7 +84,7 @@ envelope.addEventListener('touchstart', (e) => {
       setTimeout(() => {
         const heart = document.createElement("div");
         heart.classList.add("float-heart");
-        heart.innerHTML = "❤️";
+        heart.innerHTML = "❤";
 
         const rect = envelope.getBoundingClientRect();
         heart.style.left = Math.random() * 100 + "vw";
@@ -100,7 +100,7 @@ envelope.addEventListener('touchstart', (e) => {
     heartInterval = setInterval(() => {
       const heart = document.createElement("div");
       heart.classList.add("float-heart");
-      heart.innerHTML = "❤️";
+      heart.innerHTML = "💕";
       heart.style.left = Math.random() * 100 + "vw";
       heart.style.transition = `transform ${3 + Math.random() * 2}s linear, opacity ${3 + Math.random() * 2}s ease-out`;
       heart.style.fontSize = (Math.random() * 10 + 15) + "px";
@@ -141,6 +141,33 @@ title.addEventListener('mouseover', () => {
       const y = rect.top + Math.random() * rect.height;
       createSparkle(x, y);
     }, i * 100);
+  }
+});
+
+// Add sparkles around the envelope on hover
+envelope.addEventListener('mouseover', () => {
+  for (let i = 0; i < 5; i++) {
+    setTimeout(() => {
+      const rect = envelope.getBoundingClientRect();
+      const x = rect.left + Math.random() * rect.width;
+      const y = rect.top + Math.random() * rect.height;
+      createSparkle(x, y);
+    }, i * 200);
+  }
+});
+
+// Add random floating hearts when the envelope is clicked
+envelope.addEventListener('click', () => {
+  for (let i = 0; i < 5; i++) {
+    setTimeout(() => {
+      const heart = document.createElement('div');
+      heart.classList.add('float-heart');
+      heart.innerHTML = '💓';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = 3 + Math.random() * 2 + 's';
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 5000);
+    }, i * 500);
   }
 });
 
