@@ -7,7 +7,7 @@ envelope.addEventListener("keydown", (e) => {
   if (e.key === "Enter" || e.key === " ") envelope.click();
 });
 
-envelope.addEventListener('click', () => {
+envelope.addEventListener('click', (e) => {
   const opening = !envelope.classList.contains("flap");
   if (opening) {
     envelope.classList.add('flap');
@@ -21,7 +21,7 @@ envelope.addEventListener('click', () => {
         const rect = envelope.getBoundingClientRect();
         heart.style.left = Math.random() * 100 + "vw";
         heart.style.top = rect.top + rect.height / 2 + "px";
-        heart.style.position = "absolute"; 
+        heart.style.position = "absolute";
 
         heart.style.fontSize = (Math.random() * 10 + 15) + "px";
         document.body.appendChild(heart);
@@ -34,7 +34,7 @@ envelope.addEventListener('click', () => {
       heart.classList.add("float-heart");
       heart.innerHTML = "❤️";
       heart.style.left = Math.random() * 100 + "vw";
-      heart.style.transition = `transform ${3 + Math.random()*2}s linear, opacity ${3 + Math.random()*2}s ease-out`;
+      heart.style.transition = `transform ${3 + Math.random() * 2}s linear, opacity ${3 + Math.random() * 2}s ease-out`;
       heart.style.fontSize = (Math.random() * 10 + 15) + "px";
       document.body.appendChild(heart);
       setTimeout(() => heart.remove(), 7000);
@@ -52,7 +52,7 @@ envelope.addEventListener('click', () => {
       }, i * 100);
     }
 
-  } else {
+  } else if (!letter.contains(e.target)) { // Close only if clicking outside the letter
     letter.classList.remove("zoomed");
     letter.classList.add("closing");
 
@@ -79,7 +79,7 @@ envelope.addEventListener('touchstart', (e) => {
         const rect = envelope.getBoundingClientRect();
         heart.style.left = Math.random() * 100 + "vw";
         heart.style.top = rect.top + rect.height / 2 + "px";
-        heart.style.position = "absolute"; 
+        heart.style.position = "absolute";
 
         heart.style.fontSize = (Math.random() * 10 + 15) + "px";
         document.body.appendChild(heart);
@@ -92,7 +92,7 @@ envelope.addEventListener('touchstart', (e) => {
       heart.classList.add("float-heart");
       heart.innerHTML = "❤️";
       heart.style.left = Math.random() * 100 + "vw";
-      heart.style.transition = `transform ${3 + Math.random()*2}s linear, opacity ${3 + Math.random()*2}s ease-out`;
+      heart.style.transition = `transform ${3 + Math.random() * 2}s linear, opacity ${3 + Math.random() * 2}s ease-out`;
       heart.style.fontSize = (Math.random() * 10 + 15) + "px";
       document.body.appendChild(heart);
       setTimeout(() => heart.remove(), 7000);
@@ -110,7 +110,7 @@ envelope.addEventListener('touchstart', (e) => {
       }, i * 100);
     }
 
-  } else {
+  } else if (!letter.contains(e.target)) { // Close only if touching outside the letter
     letter.classList.remove("zoomed");
     letter.classList.add("closing");
 
