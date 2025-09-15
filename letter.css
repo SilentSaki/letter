@@ -233,6 +233,26 @@ body{
   animation: fadeIn 3s ease-in-out;
 }
 
+/* Glow effect for the envelope */
+.envelope-wrapper:hover {
+  box-shadow: 0 0 20px var(--heart-color), 0 0 40px var(--hover-color);
+  transition: box-shadow 0.5s ease-in-out;
+}
+
+/* Bounce animation for the title */
+.title {
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
 .footer {
   position: absolute;
   bottom: 5%;
@@ -609,5 +629,46 @@ body{
 
 .scroll-top-btn:active {
   transform: scale(1);
+}
+
+/* Floating hearts in the background */
+@keyframes floatHearts {
+  0% {
+    transform: translateY(100vh) scale(0.5);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-10vh) scale(1);
+    opacity: 0;
+  }
+}
+
+.floating-heart {
+  position: absolute;
+  bottom: -10%;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  background: var(--heart-color);
+  border-radius: 50%;
+  animation: floatHearts 5s infinite ease-in-out;
+  opacity: 0;
+  z-index: 1;
+}
+
+.flap .heart {
+  animation: tiltRight 0.5s forwards ease-in-out; /* Trigger tilt animation */
+}
+
+@keyframes tiltRight {
+  0% {
+    transform: translate(-50%, -20%) rotate(45deg); /* Initial position */
+  }
+  100% {
+    transform: translate(-50%, -20%) rotate(80deg); /* Tilted to the right */
+  }
 }
 
