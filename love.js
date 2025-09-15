@@ -74,10 +74,10 @@ envelope.addEventListener('click', (e) => {
 });
 
 envelope.addEventListener('touchstart', (e) => {
-  if (isScrolling) return; // Ignore touchstart if scrolling
-  e.preventDefault(); // Prevent accidental double interactions
+  if (isScrolling) return; // Allow scrolling to proceed
   const opening = !envelope.classList.contains("flap");
   if (opening) {
+    e.preventDefault(); // Prevent default only when opening the envelope
     envelope.classList.add('flap');
 
     for (let i = 0; i < 15; i++) {
@@ -120,7 +120,8 @@ envelope.addEventListener('touchstart', (e) => {
       }, i * 100);
     }
 
-  } else if (!letter.contains(e.target)) { // Close only if touching outside the letter
+  } else if (!letter.contains(e.target)) {
+    e.preventDefault(); // Prevent default only when closing the envelope
     letter.classList.remove("zoomed");
     letter.classList.add("closing");
 
