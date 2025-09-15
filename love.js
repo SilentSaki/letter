@@ -3,11 +3,13 @@ const letter = document.querySelector('.letter');
 const title = document.querySelector('.title');
 let heartInterval;
 let isScrolling = false; // Flag to track scrolling
+let scrollTimeout;
 
 // Prevent closing the letter while scrolling
 letter.addEventListener('scroll', () => {
   isScrolling = true;
-  setTimeout(() => { isScrolling = false; }, 200); // Reset after 200ms
+  clearTimeout(scrollTimeout);
+  scrollTimeout = setTimeout(() => { isScrolling = false; }, 300); // Reset after 300ms
 });
 
 envelope.addEventListener("keydown", (e) => {
@@ -72,6 +74,7 @@ envelope.addEventListener('click', (e) => {
 });
 
 envelope.addEventListener('touchstart', (e) => {
+  if (isScrolling) return; // Ignore touchstart if scrolling
   e.preventDefault(); // Prevent accidental double interactions
   const opening = !envelope.classList.contains("flap");
   if (opening) {
@@ -147,4 +150,4 @@ function createSparkle(x, y) {
   sparkle.style.top = y + "px";
   document.body.appendChild(sparkle);
   setTimeout(() => sparkle.remove(), 2000);
-}
+}  
